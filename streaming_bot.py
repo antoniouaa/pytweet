@@ -20,7 +20,7 @@ class StreamingBot(TwythonStreamer):
 
     def on_error(self, status_code, data):
         print(status_code, data)
-        self.disconnect()
+        #self.disconnect()
 
     def save_to_csv(self, tweet):
         with open("saved_tweets.csv", "a", encoding="utf-8") as infile:
