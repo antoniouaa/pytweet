@@ -28,7 +28,7 @@ sample_query = {"q": "trump",
 
 search_term = input("Search for: ")
 
-python_tweets = Twython(credentials["CONSUMER_KEY"], credentials["CONSUMER_SECRET"])
+#python_tweets = Twython(credentials["CONSUMER_KEY"], credentials["CONSUMER_SECRET"])
 
 stream = StreamingBot(credentials["CONSUMER_KEY"], credentials["CONSUMER_SECRET"], credentials["ACCESS_TOKEN"], credentials["ACCESS_SECRET"])
 stream.statuses.filter(track=search_term)
