@@ -13,7 +13,6 @@ def batch_query(query):
 
     df = pd.DataFrame(post_)
     df.sort_values(by="favorite_count", inplace=True, ascending=False)
-    #df.to_csv("saved_tweets.csv", sep=",")
     return df
 
 credentials = {
@@ -25,9 +24,9 @@ credentials = {
 search_term = input("Search for: ")
 
 sample_query = {"q": f"{search_term}",
-                "result_type": "recent",
+                "result_type": "popular",
                 "lang": "en",
-                "count": 50}
+                "count": 100}
 
 python_tweets = Twython(credentials["CONSUMER_KEY"], credentials["CONSUMER_SECRET"])
 df = batch_query(sample_query)
