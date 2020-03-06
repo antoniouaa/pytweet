@@ -22,18 +22,18 @@ credentials = {
         "ACCESS_TOKEN" : "780845339796393984-FT9bNGCOwBlMYSuHy120zBF2g7yYcY0",
         "ACCESS_SECRET" : "LxX9ARDyFkWlwoGTZXAVjSdB90zB7J0mwT19guJSnUO6l"}
 
-sample_query = {"q": "trump",
-                "result_type": "popular",
-                "count": 1000,
-                "lang": "en"}
+search_term = input("Search for: ")
 
+sample_query = {"q": f"{search_term}",
+                "result_type": "recent",
+                "lang": "en",
+                "count": 50}
 
-#python_tweets = Twython(credentials["CONSUMER_KEY"], credentials["CONSUMER_SECRET"])
-#df = batch_query(sample_query)
-#print(df.head(10))
+python_tweets = Twython(credentials["CONSUMER_KEY"], credentials["CONSUMER_SECRET"])
+df = batch_query(sample_query)
+print(df)
 #res = python_tweets.cursor(python_tweets.search, q="trump")
 
-search_term = input("Search for: ")
-stream = StreamingBot(credentials["CONSUMER_KEY"], credentials["CONSUMER_SECRET"], credentials["ACCESS_TOKEN"], credentials["ACCESS_SECRET"])
-stream.statuses.filter(track=search_term)
+#stream = StreamingBot(credentials["CONSUMER_KEY"], credentials["CONSUMER_SECRET"], credentials["ACCESS_TOKEN"], credentials["ACCESS_SECRET"])
+#stream.statuses.filter(track=search_term)
 
