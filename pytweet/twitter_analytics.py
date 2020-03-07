@@ -3,31 +3,12 @@ import ast
 import sys
 from collections import Counter
 
-def create_heatmap():
-    from geopy.geocoders import Nominatim
-    import gmplot
-
-    geolocator = Nominatim(user_agent="twitter_bot")
-
-    coordinates = {"latitude": [], "longitude": []}
-    for count, user_loc in enumerate(tweets.location):
-        try:
-            location = geolocator.geocode(user_loc)
-            if location:
-                coordinates["latitude"].append(location.latitude)
-                coordinates["longitude"].append(location.longitude)
-        except:
-            pass
-
-    gmap = gmplot.GoogleMapPlotter(30, 0, 3)
-    gmap.heatmap(coordinates["latitude"], coordinates["longitude"], radius=20)
-    gmap.draw("trump_heatmap.html")
-
 try:
     tweets = pd.read_csv("saved_tweets.csv")
 except FileNotFoundError as fnfe:
     print("saved_tweets.csv doesn't exist")
     sys.exit()
+
 tweets.columns = ["hashtags", "text", "user", "location"]
 
 list_hashtag_strings = [entry for entry in tweets.hashtags]
@@ -58,4 +39,3 @@ print(f"Number of tweets: {len(list_text)}")
 print(f"Average length of tweet: {average_text_length}")
 print(f"Most Popular User Loc: {counter_user_loc.most_common(1)}")
 
-#create_heatmap()
